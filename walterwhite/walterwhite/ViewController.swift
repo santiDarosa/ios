@@ -11,6 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var image: UIImageView!
+    @IBAction func `switch`(_ sender: Any) {
+        image.image = UIImage(named:"img-profile-2.png")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
