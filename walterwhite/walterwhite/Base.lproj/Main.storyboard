@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="walterwhite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-top-background.jpg" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJ9-hR-f9i">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="226.66666666666666"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Walter White" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GDd-nk-9Uz">
+                                <rect key="frame" x="157.66666666666666" y="286.66666666666669" width="99.999999999999972" height="28.666666666666686"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAP-Bd-VFA">
+                                <rect key="frame" x="157.66666666666666" y="330.33333333333331" width="100.99999999999997" height="20.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn-facebook.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6bM-Iu-j2y">
+                                <rect key="frame" x="103.33333333333333" y="435" width="41.999999999999986" height="42"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn-twitter.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vws-Zv-FGk">
+                                <rect key="frame" x="268.66666666666669" y="435" width="42" height="42"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGK-bN-egc">
+                                <rect key="frame" x="166" y="512" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="9" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXh-WD-ijE">
+                                <rect key="frame" x="20.666666666666657" y="371" width="372.66666666666674" height="14"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
+                                </accessibility>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-profile.png" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-5w-O4w">
+                                <rect key="frame" x="157.66666666666666" y="176.66666666666666" width="99.999999999999972" height="99.999999999999972"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="cAP-Bd-VFA" firstAttribute="top" secondItem="GDd-nk-9Uz" secondAttribute="bottom" constant="15" id="3ZV-ED-8WL"/>
+                            <constraint firstItem="IXh-WD-ijE" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7MS-5j-yxK"/>
+                            <constraint firstItem="eJ9-hR-f9i" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.6" id="DBW-Gu-EZR"/>
+                            <constraint firstItem="vws-Zv-FGk" firstAttribute="height" secondItem="6bM-Iu-j2y" secondAttribute="height" id="IOK-oB-VVb"/>
+                            <constraint firstItem="GDd-nk-9Uz" firstAttribute="leading" secondItem="8Hq-5w-O4w" secondAttribute="leading" id="Luf-pB-JgJ"/>
+                            <constraint firstItem="vws-Zv-FGk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" multiplier="1.4" id="M6l-GU-0yM"/>
+                            <constraint firstItem="IXh-WD-ijE" firstAttribute="top" secondItem="cAP-Bd-VFA" secondAttribute="bottom" constant="20" id="OCI-9k-acD"/>
+                            <constraint firstItem="vws-Zv-FGk" firstAttribute="top" secondItem="6bM-Iu-j2y" secondAttribute="top" id="P3Q-hh-Mzg"/>
+                            <constraint firstItem="8Hq-5w-O4w" firstAttribute="centerY" secondItem="eJ9-hR-f9i" secondAttribute="bottom" id="WF4-se-IUP"/>
+                            <constraint firstItem="6bM-Iu-j2y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" multiplier="0.6" id="WXb-At-Xq7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eJ9-hR-f9i" secondAttribute="trailing" id="a0S-qL-ZFd"/>
+                            <constraint firstItem="cAP-Bd-VFA" firstAttribute="centerX" secondItem="GDd-nk-9Uz" secondAttribute="centerX" id="aA1-sY-mla"/>
+                            <constraint firstItem="vws-Zv-FGk" firstAttribute="width" secondItem="6bM-Iu-j2y" secondAttribute="width" id="bd7-yz-X1J"/>
+                            <constraint firstItem="eJ9-hR-f9i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="c92-N5-G7L"/>
+                            <constraint firstItem="cAP-Bd-VFA" firstAttribute="leading" secondItem="GDd-nk-9Uz" secondAttribute="leading" id="cOK-Hb-rLq"/>
+                            <constraint firstItem="IXh-WD-ijE" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="cle-iC-7RM"/>
+                            <constraint firstItem="GDd-nk-9Uz" firstAttribute="trailing" secondItem="8Hq-5w-O4w" secondAttribute="trailing" id="dsp-CF-jEc"/>
+                            <constraint firstItem="6bM-Iu-j2y" firstAttribute="top" secondItem="IXh-WD-ijE" secondAttribute="bottom" constant="50" id="ijS-jL-CYI"/>
+                            <constraint firstItem="IXh-WD-ijE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="centerX" multiplier="0.1" id="lKx-6X-kaB"/>
+                            <constraint firstItem="eJ9-hR-f9i" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="me2-o6-d9V"/>
+                            <constraint firstItem="GDd-nk-9Uz" firstAttribute="top" secondItem="8Hq-5w-O4w" secondAttribute="bottom" constant="10" id="r0H-NR-heA"/>
+                            <constraint firstItem="8Hq-5w-O4w" firstAttribute="centerX" secondItem="eJ9-hR-f9i" secondAttribute="centerX" id="xNb-nA-upC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="8Hq-5w-O4w" id="HIQ-Hl-4mv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="118.29085457271366"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icn-facebook.png" width="42" height="42"/>
+        <image name="icn-twitter.png" width="42" height="42"/>
+        <image name="img-profile.png" width="100" height="100"/>
+        <image name="img-top-background.jpg" width="600" height="337"/>
+    </resources>
+</document>
