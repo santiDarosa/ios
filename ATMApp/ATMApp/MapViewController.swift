@@ -10,7 +10,9 @@
 import UIKit
 import MapKit
 import CoreLocation
-import RestEssentials
+import Alamofire
+import ObjectMapper
+
 
 //ObjectMapper
 
@@ -18,6 +20,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
     @IBOutlet weak var ATMMapView: MKMapView!
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
+    
     
     
     override func viewDidLoad() {
@@ -69,20 +72,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate,MKMapViewDe
         //centerMap(locValue)
     }
     func getService(){
-        guard let rest = RestController.make(urlString: "http://ucu-atm.herokuapp.com/api/atm") else {
-            print("Bad URL")
-            return
-        }
-        
-        rest.get(withDeserializer: JSONDeserializer()) { result, httpResponse in
-            do {
-                let json = try result.value()
-                print(json.array)
-            } catch {
-                print("Error performing GET: \(error)")
+        Alamofire.request("http://ucu-atm.herokuapp.com/api/atm").responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                let datos = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? String
+                let atm = Mapper<ATM>().map(JSONString: datos)
+
+                ModelManager.shared.atmLocations.append(atm)
+                }
             }
         }
     }
     
-}
+
 

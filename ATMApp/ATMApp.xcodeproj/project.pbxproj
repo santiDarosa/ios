@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8EA59FFE20AF712C00E967CC /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA59FFD20AF712C00E967CC /* ModelManager.swift */; };
 		8EC7ED6320AE42D400B4EB8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7ED6220AE42D400B4EB8F /* AppDelegate.swift */; };
 		8EC7ED6520AE42D400B4EB8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC7ED6420AE42D400B4EB8F /* ViewController.swift */; };
 		8EC7ED6820AE42D400B4EB8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EC7ED6620AE42D400B4EB8F /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		3118D6721C429FE9E883AE70 /* Pods-ATMApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ATMApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ATMApp/Pods-ATMApp.debug.xcconfig"; sourceTree = "<group>"; };
 		40F902ABAD2C74B9D080158D /* Pods_ATMApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ATMApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA59FFD20AF712C00E967CC /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		8EC7ED5F20AE42D400B4EB8F /* ATMApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATMApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC7ED6220AE42D400B4EB8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC7ED6420AE42D400B4EB8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				8EC7ED6E20AE42D400B4EB8F /* Info.plist */,
 				8EC7ED7420AE431A00B4EB8F /* MapViewController.swift */,
 				8EC7ED7620AE62D800B4EB8F /* ATM.swift */,
+				8EA59FFD20AF712C00E967CC /* ModelManager.swift */,
 			);
 			path = ATMApp;
 			sourceTree = "<group>";
@@ -205,11 +208,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ATMApp/Pods-ATMApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RestEssentials/RestEssentials.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RestEssentials.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -225,6 +232,7 @@
 			files = (
 				8EC7ED6520AE42D400B4EB8F /* ViewController.swift in Sources */,
 				8EC7ED7520AE431A00B4EB8F /* MapViewController.swift in Sources */,
+				8EA59FFE20AF712C00E967CC /* ModelManager.swift in Sources */,
 				8EC7ED7720AE62D800B4EB8F /* ATM.swift in Sources */,
 				8EC7ED6320AE42D400B4EB8F /* AppDelegate.swift in Sources */,
 			);

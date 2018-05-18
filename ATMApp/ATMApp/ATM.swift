@@ -7,26 +7,39 @@
 //
 
 import Foundation
+import ObjectMapper
+
 enum Network {
-    case "Banred"
-    case "RedBrou"
+    case banred, redBrou
 }
 enum Status {
-    case "normal"
-    case "normal (with tint)"
-    case "out of order"
+    case normal,normalWithTint,outOfOrder
 }
-class ATM{
-    var acceptsDeposits: Bool
-    var address: String
-    var hasMoney: Bool
-    var id: Int
-    var imageUrl: String
-    var latitude: Float
-    var longitude: Float
-    var network: Network
-    var openHours: (Int,Int)
-    var status: Status
-    init(){}
+class ATM: Mappable{
+    var acceptsDeposits: Bool?
+    var address: String?
+    var hasMoney: Bool?
+    var id: Int?
+    var imageUrl: String?
+    var latitude: Float?
+    var longitude: Float?
+    var network: Network?
+    var openHours: String?
+    var status: Status?
+        required init?(map: Map){
+        
+        }
+    func mapping(map: Map){
+        acceptsDeposits <- map["accepts_deposits"]
+        address <- map["address"]
+        hasMoney <- map["has_money"]
+        id <- map["id"]
+        imageUrl <- map["image_url"]
+        latitude <- map["location.lat"]
+        longitude <- map["location.lon"]
+        network <- map["network"]
+        openHours <- map["open_hours"]
+        status <- map["status"]
+    }
     
 }

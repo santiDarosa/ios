@@ -1,12 +1,19 @@
 PODS:
-  - RestEssentials (4.0.2)
+  - Alamofire (4.7.2)
+  - AlamofireObjectMapper (5.0.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.0)
+  - ObjectMapper (3.1.0)
 
 DEPENDENCIES:
-  - RestEssentials (~> 4.0.2)
+  - AlamofireObjectMapper (~> 5.0)
+  - ObjectMapper (~> 3.1)
 
 SPEC CHECKSUMS:
-  RestEssentials: 3d732e7a5eeaf9abe3fcbaf6085dbd73642a621f
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
 
-PODFILE CHECKSUM: e39e48d23fd5d29e9ae175efdf8d32542cd446c5
+PODFILE CHECKSUM: 4af4ed15f5cdb6f4460c7e902639fa1d598671ab
 
 COCOAPODS: 1.4.0
