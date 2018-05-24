@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATMApp/MapViewController.swift"
+            timestampString = "548819514.254997"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATMApp.MapViewController.__deallocating_deinit"
+                  moduleName = "ATMApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SP25/Desktop/ATMApp/ATMApp/MapViewController.swift"
+                  timestampString = "548294387.2208641"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATMApp.MapViewController.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ATMApp.MapViewController"
+                  moduleName = "ATMApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SP25/Desktop/ATMApp/ATMApp/MapViewController.swift"
+                  timestampString = "548294387.2240241"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATMApp.MapViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ATMApp.MapViewController"
+                  moduleName = "ATMApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SP25/Desktop/ATMApp/ATMApp/MapViewController.swift"
+                  timestampString = "548294387.227183"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATMApp.MapViewController.__allocating_init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;ATMApp.MapViewController&gt;"
+                  moduleName = "ATMApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SP25/Desktop/ATMApp/ATMApp/MapViewController.swift"
+                  timestampString = "548294387.2296571"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ATMApp.MapViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;ATMApp.MapViewController&gt;"
+                  moduleName = "ATMApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/SP25/Desktop/ATMApp/ATMApp/MapViewController.swift"
+                  timestampString = "548294387.232196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "46">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ATMApp/MapViewController.swift"
+            timestampString = "548819514.255722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "MapViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
