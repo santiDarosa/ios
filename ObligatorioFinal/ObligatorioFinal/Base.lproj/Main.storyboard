@@ -13,10 +13,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +120,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="3ww-op-NgT"/>
                     <connections>
+                        <outlet property="concertsMapView" destination="ZLC-NF-ivb" id="6Yd-1W-hOW"/>
                         <segue destination="vtz-7f-7py" kind="show" id="G7o-YX-UR2"/>
                         <segue destination="C8y-ZW-eW7" kind="show" id="nea-yh-49f"/>
                     </connections>
@@ -128,10 +129,10 @@
             </objects>
             <point key="canvasLocation" x="456.80000000000001" y="118.29085457271366"/>
         </scene>
-        <!--View Controller-->
+        <!--Concert View Controller-->
         <scene sceneID="zgA-bA-UGg">
             <objects>
-                <viewController id="vtz-7f-7py" sceneMemberID="viewController">
+                <viewController id="vtz-7f-7py" customClass="ConcertViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jC5-gT-DKd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,10 +281,10 @@
             </objects>
             <point key="canvasLocation" x="1565.5999999999999" y="-188.45577211394306"/>
         </scene>
-        <!--View Controller-->
+        <!--Finder View Controller-->
         <scene sceneID="Mgi-mY-IT6">
             <objects>
-                <viewController id="C8y-ZW-eW7" sceneMemberID="viewController">
+                <viewController id="C8y-ZW-eW7" customClass="FinderViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SJj-10-zlY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,10 +376,10 @@
             </objects>
             <point key="canvasLocation" x="1565.5999999999999" y="585.1574212893554"/>
         </scene>
-        <!--View Controller-->
+        <!--Band View Controller-->
         <scene sceneID="O13-am-dcQ">
             <objects>
-                <viewController id="QU6-Pc-iSN" sceneMemberID="viewController">
+                <viewController id="QU6-Pc-iSN" customClass="BandViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FZM-XU-lMH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -603,6 +604,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OOa-V4-pUt"/>
+        <segue reference="oaJ-sD-6JK"/>
     </inferredMetricsTieBreakers>
 </document>

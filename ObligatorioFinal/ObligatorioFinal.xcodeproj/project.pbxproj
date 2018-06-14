@@ -12,10 +12,13 @@
 		8E11FFB420C8B52400ADED0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB220C8B52400ADED0D /* Main.storyboard */; };
 		8E11FFB620C8B52400ADED0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB520C8B52400ADED0D /* Assets.xcassets */; };
 		8E11FFB920C8B52400ADED0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB720C8B52400ADED0D /* LaunchScreen.storyboard */; };
+		8E4C6FE420D1EEED0056719F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE320D1EEED0056719F /* MapViewController.swift */; };
+		8E4C6FE620D1EF400056719F /* ConcertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE520D1EF400056719F /* ConcertViewController.swift */; };
+		8E4C6FE820D1EF650056719F /* BandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE720D1EF650056719F /* BandViewController.swift */; };
+		8E4C6FEA20D1EF830056719F /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE920D1EF830056719F /* FinderViewController.swift */; };
 		8ED191F020CA081D00EAAB64 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191EF20CA081D00EAAB64 /* Song.swift */; };
 		8ED191F220CA08AC00EAAB64 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F120CA08AC00EAAB64 /* Provider.swift */; };
 		8ED191F420CA093E00EAAB64 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F320CA093E00EAAB64 /* Member.swift */; };
-		8ED191F620CA09C300EAAB64 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F520CA09C300EAAB64 /* Place.swift */; };
 		8ED191F820CA0A8F00EAAB64 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F720CA0A8F00EAAB64 /* Concert.swift */; };
 		8ED191FA20CA0B7700EAAB64 /* Band.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F920CA0B7700EAAB64 /* Band.swift */; };
 /* End PBXBuildFile section */
@@ -28,10 +31,13 @@
 		8E11FFB520C8B52400ADED0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E11FFB820C8B52400ADED0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E11FFBA20C8B52400ADED0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E4C6FE320D1EEED0056719F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		8E4C6FE520D1EF400056719F /* ConcertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertViewController.swift; sourceTree = "<group>"; };
+		8E4C6FE720D1EF650056719F /* BandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandViewController.swift; sourceTree = "<group>"; };
+		8E4C6FE920D1EF830056719F /* FinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
 		8ED191EF20CA081D00EAAB64 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		8ED191F120CA08AC00EAAB64 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		8ED191F320CA093E00EAAB64 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
-		8ED191F520CA09C300EAAB64 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		8ED191F720CA0A8F00EAAB64 /* Concert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concert.swift; sourceTree = "<group>"; };
 		8ED191F920CA0B7700EAAB64 /* Band.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Band.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +74,10 @@
 			children = (
 				8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */,
 				8E11FFB020C8B52400ADED0D /* ViewController.swift */,
+				8E4C6FE320D1EEED0056719F /* MapViewController.swift */,
+				8E4C6FE520D1EF400056719F /* ConcertViewController.swift */,
+				8E4C6FE720D1EF650056719F /* BandViewController.swift */,
+				8E4C6FE920D1EF830056719F /* FinderViewController.swift */,
 				8E11FFB220C8B52400ADED0D /* Main.storyboard */,
 				8E11FFB520C8B52400ADED0D /* Assets.xcassets */,
 				8E11FFB720C8B52400ADED0D /* LaunchScreen.storyboard */,
@@ -75,7 +85,6 @@
 				8ED191EF20CA081D00EAAB64 /* Song.swift */,
 				8ED191F120CA08AC00EAAB64 /* Provider.swift */,
 				8ED191F320CA093E00EAAB64 /* Member.swift */,
-				8ED191F520CA09C300EAAB64 /* Place.swift */,
 				8ED191F720CA0A8F00EAAB64 /* Concert.swift */,
 				8ED191F920CA0B7700EAAB64 /* Band.swift */,
 			);
@@ -155,10 +164,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ED191F220CA08AC00EAAB64 /* Provider.swift in Sources */,
+				8E4C6FE820D1EF650056719F /* BandViewController.swift in Sources */,
 				8ED191F020CA081D00EAAB64 /* Song.swift in Sources */,
 				8ED191FA20CA0B7700EAAB64 /* Band.swift in Sources */,
+				8E4C6FEA20D1EF830056719F /* FinderViewController.swift in Sources */,
 				8E11FFB120C8B52400ADED0D /* ViewController.swift in Sources */,
-				8ED191F620CA09C300EAAB64 /* Place.swift in Sources */,
+				8E4C6FE420D1EEED0056719F /* MapViewController.swift in Sources */,
+				8E4C6FE620D1EF400056719F /* ConcertViewController.swift in Sources */,
 				8E11FFAF20C8B52400ADED0D /* AppDelegate.swift in Sources */,
 				8ED191F820CA0A8F00EAAB64 /* Concert.swift in Sources */,
 				8ED191F420CA093E00EAAB64 /* Member.swift in Sources */,
