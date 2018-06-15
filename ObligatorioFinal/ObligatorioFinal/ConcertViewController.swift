@@ -10,8 +10,17 @@ import UIKit
 
 class ConcertViewController: UIViewController {
     
+    @IBOutlet weak var concertLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var providerLabel: UILabel!
+    @IBOutlet weak var concertImageView: UIImageView!
+    var concert :Concert? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        concertLabel.text = concert?.title
+        priceLabel.text = concert?.price
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

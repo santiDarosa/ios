@@ -12,23 +12,19 @@ import MapKit
 class Concert:NSObject,MKAnnotation{
     
     var dateConcert: Date
-    var minPrice: Int
-    var maxPrice: Int?
+    var price: Int
     var provider: Provider
     let title: String?
     let locationName: String
-    let discipline: String
     let coordinate: CLLocationCoordinate2D
     
-    init(title: String, locationName: String, discipline: String, coordinate: CLLocationCoordinate2D, dateConcert: Date, minPrice: Int, maxPrice: Int?, provider: Provider) {
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, dateConcert: Date, price: Int, provider: Provider) {
         self.title = title
         self.locationName = locationName
-        self.discipline = discipline
         self.coordinate = coordinate
 
         self.dateConcert = dateConcert
-        self.minPrice = minPrice
-        self.maxPrice = maxPrice
+        self.price = price
         self.provider = provider
         
         super.init()

@@ -12,6 +12,13 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var concertsMapView: MKMapView!
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var priceSwitch: UISwitch!
+    @IBOutlet weak var priceSlider: UISlider!
+    
+    @IBOutlet weak var locationSwitch: UISwitch!
+    @IBOutlet weak var locationSlider: UISlider!
+    var selectedConcert: Concert?
     
     
     
@@ -23,11 +30,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         // show concert on map
         concertsMapView.delegate = self
-        let concert = Concert(title: "King David Kalakaua",
-                              locationName: "Waikiki Gateway Park",
-                              discipline: "Sculpture",
-                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661), dateConcert: Date(), minPrice: 500, maxPrice: 800, provider: Provider(name: "RedUTS", url: "reduts.com.uy"))
-        concertsMapView.addAnnotation(concert)
+        ModelManager.addData()
+        var concertsToDisplay : [Concert] = []
+        for concert in ModelManager.myBandsConcerts {
+            if concert.price < 1200{
+                concertsToDisplay.append(concert)
+            }
+        }
+        concertsMapView.addAnnotations(concertsToDisplay)
 
     }
     
@@ -64,13 +74,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     //al apretar el boton de la marker deberia hacer un segue y mostrar los detalles del concierto
-    /*
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! Artwork
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        location.mapItem().openInMaps(launchOptions: launchOptions)
-    }*/
+        selectedConcert = view.annotation as! Concert
+        self.performSegue(withIdentifier: "ConcertViewControllerSegueIdentifier", sender: nil)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? ConcertViewController {
+            destinationViewController.concert = selectedConcert
+        }
+    }
     
     //esto es para pedirle al user su ubicacion
     /*
@@ -88,4 +104,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         checkLocationAuthorizationStatus()
     }
     */
+    
+    @IBAction func filterViewButton(_ sender: Any) {
+        filterView.isHidden = true
+    }
+    @IBAction func filterButton(_ sender: Any) {
+        filterView.isHidden = false
+    }
+    @IBAction func addBandButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "FinderViewControllerSegueIdentifier", sender: nil)
+    }
+    @IBAction func activatePriceSwitch(_ sender: Any) {
+        priceSlider.isEnabled = priceSwitch.isOn
+    }
+    @IBAction func activateLocationSwitch(_ sender: Any) {
+        locationSlider.isEnabled = locationSwitch.isOn
+    }
+    
 }
