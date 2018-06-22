@@ -10,6 +10,7 @@ import Foundation
 
 class Band{
     
+    var idBand: Int
     var nameBand: String
     var concertsBand: [Concert] = []
     var membersBand: [Member] = []
@@ -17,7 +18,8 @@ class Band{
     var imageBand: String
     var gender: String
     
-    init(name: String, image: String, gender: String) {
+    init(id: Int, name: String, image: String, gender: String) {
+        self.idBand = id
         self.nameBand = name
         self.imageBand = image
         self.gender = gender

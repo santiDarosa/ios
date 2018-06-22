@@ -17,8 +17,9 @@ class Concert:NSObject,MKAnnotation{
     let title: String?
     let locationName: String
     let coordinate: CLLocationCoordinate2D
+    var bandId: Int
     
-    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, dateConcert: Date, price: Int, provider: Provider) {
+    init(title: String, locationName: String, coordinate: CLLocationCoordinate2D, dateConcert: Date, price: Int, provider: Provider, bandId: Int) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
@@ -26,6 +27,8 @@ class Concert:NSObject,MKAnnotation{
         self.dateConcert = dateConcert
         self.price = price
         self.provider = provider
+        
+        self.bandId = bandId
         
         super.init()
     }

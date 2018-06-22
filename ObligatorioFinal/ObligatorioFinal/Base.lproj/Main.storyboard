@@ -44,19 +44,9 @@
                                     <action selector="filterButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TEj-mV-9aG"/>
                                 </connections>
                             </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SR8-ur-zaJ">
-                                <rect key="frame" x="173" y="64" width="202" height="269.5"/>
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SR8-ur-zaJ">
+                                <rect key="frame" x="157" y="64" width="202" height="269.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DA-zy-opj">
-                                        <rect key="frame" x="82" y="232" width="37.5" height="37.5"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="1DA-zy-opj" secondAttribute="height" id="ByX-cF-Cc7"/>
-                                        </constraints>
-                                        <state key="normal" title="Filter"/>
-                                        <connections>
-                                            <action selector="filterViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcF-yz-oMJ"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehc-E9-dc5">
                                         <rect key="frame" x="8" y="155.5" width="79" height="25.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
@@ -76,10 +66,13 @@
                                         </connections>
                                     </switch>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zIU-yw-Wtb">
-                                        <rect key="frame" x="8" y="82.5" width="185.5" height="31"/>
+                                        <rect key="frame" x="8" y="82.5" width="186" height="31"/>
+                                        <connections>
+                                            <action selector="changeValuePriceSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="jYY-mc-xIg"/>
+                                        </connections>
                                     </slider>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iL9-E7-CU7">
-                                        <rect key="frame" x="8" y="192" width="185.5" height="31"/>
+                                        <rect key="frame" x="8" y="192" width="186" height="31"/>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8D-vt-VQ8">
                                         <rect key="frame" x="8" y="34.5" width="46" height="25.5"/>
@@ -87,6 +80,22 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2r-ZT-pP0">
+                                        <rect key="frame" x="77" y="124" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1DA-zy-opj">
+                                        <rect key="frame" x="69" y="232" width="37.5" height="37.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="1DA-zy-opj" secondAttribute="height" id="ByX-cF-Cc7"/>
+                                        </constraints>
+                                        <state key="normal" title="Filter"/>
+                                        <connections>
+                                            <action selector="filterViewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FcF-yz-oMJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -104,9 +113,12 @@
                                     <constraint firstItem="1DA-zy-opj" firstAttribute="top" secondItem="iL9-E7-CU7" secondAttribute="bottom" constant="10" id="W97-B3-o0X"/>
                                     <constraint firstItem="zIU-yw-Wtb" firstAttribute="leading" secondItem="SR8-ur-zaJ" secondAttribute="leading" constant="10" id="Z2v-86-Uha"/>
                                     <constraint firstItem="q2E-b4-Mzo" firstAttribute="top" secondItem="zIU-yw-Wtb" secondAttribute="bottom" constant="40" id="Zht-6e-FW0"/>
+                                    <constraint firstItem="M2r-ZT-pP0" firstAttribute="top" secondItem="zIU-yw-Wtb" secondAttribute="bottom" constant="10" id="f26-HA-pSP"/>
                                     <constraint firstItem="zIU-yw-Wtb" firstAttribute="centerX" secondItem="iL9-E7-CU7" secondAttribute="centerX" id="ie9-F1-HLD"/>
                                     <constraint firstItem="q2E-b4-Mzo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ehc-E9-dc5" secondAttribute="trailing" constant="5" id="kLx-Ca-AMT"/>
                                     <constraint firstItem="TCM-Rg-beQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Y8D-vt-VQ8" secondAttribute="trailing" constant="5" id="qGX-iV-aye"/>
+                                    <constraint firstItem="M2r-ZT-pP0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SR8-ur-zaJ" secondAttribute="leading" constant="5" id="rk3-zN-0O0"/>
+                                    <constraint firstItem="M2r-ZT-pP0" firstAttribute="centerX" secondItem="SR8-ur-zaJ" secondAttribute="centerX" id="t4Z-0s-hkJ"/>
                                     <constraint firstItem="iL9-E7-CU7" firstAttribute="centerX" secondItem="1DA-zy-opj" secondAttribute="centerX" id="uvS-He-v1E"/>
                                     <constraint firstAttribute="trailing" secondItem="q2E-b4-Mzo" secondAttribute="trailing" constant="20" id="vxh-X9-3na"/>
                                     <constraint firstAttribute="bottom" secondItem="1DA-zy-opj" secondAttribute="bottom" id="weQ-MK-S4I"/>
@@ -141,6 +153,7 @@
                         <outlet property="locationSwitch" destination="q2E-b4-Mzo" id="fU9-8h-q1h"/>
                         <outlet property="priceSlider" destination="zIU-yw-Wtb" id="3Wb-0c-Eew"/>
                         <outlet property="priceSwitch" destination="TCM-Rg-beQ" id="UYw-IR-svS"/>
+                        <outlet property="valueLabel" destination="M2r-ZT-pP0" id="LzA-9w-j7A"/>
                         <segue destination="vtz-7f-7py" kind="show" identifier="ConcertViewControllerSegueIdentifier" id="G7o-YX-UR2"/>
                         <segue destination="C8y-ZW-eW7" kind="show" identifier="FinderViewControllerSegueIdentifier" id="nea-yh-49f"/>
                     </connections>
@@ -242,7 +255,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rnr-0S-6vw">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rnr-0S-6vw">
                                 <rect key="frame" x="15" y="110" width="345" height="223.5"/>
                             </imageView>
                         </subviews>
@@ -282,7 +295,7 @@
                         <outlet property="concertLabel" destination="hQL-OU-seV" id="LOI-fx-Qrh"/>
                         <outlet property="priceLabel" destination="8iz-ec-8RZ" id="Q5A-ll-Owb"/>
                         <outlet property="providerLabel" destination="bAt-Eb-1N9" id="hp8-LI-KHP"/>
-                        <segue destination="QU6-Pc-iSN" kind="show" id="OOa-V4-pUt"/>
+                        <segue destination="QU6-Pc-iSN" kind="show" identifier="BandViewControllerSegueIdentifier" id="OOa-V4-pUt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWO-cl-10r" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -596,6 +609,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mAK-1C-sdI"/>
                     </view>
+                    <connections>
+                        <outlet property="bandImageView" destination="iZH-GE-xp9" id="co0-Jw-rgU"/>
+                        <outlet property="bandLabel" destination="ZOl-57-YCv" id="wMf-C7-FWH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAO-n0-wvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

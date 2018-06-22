@@ -11,6 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var concertsMapView: MKMapView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var priceSwitch: UISwitch!
@@ -31,13 +32,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // show concert on map
         concertsMapView.delegate = self
         ModelManager.addData()
-        var concertsToDisplay : [Concert] = []
-        for concert in ModelManager.myBandsConcerts {
-            if concert.price < 1200{
-                concertsToDisplay.append(concert)
-            }
-        }
-        concertsMapView.addAnnotations(concertsToDisplay)
+        loadConcerts(price: 5000)
+        
 
     }
     
@@ -77,9 +73,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        selectedConcert = view.annotation as! Concert
+        selectedConcert = view.annotation as! Concert?
         self.performSegue(withIdentifier: "ConcertViewControllerSegueIdentifier", sender: nil)
         
+    }
+    
+    func loadConcerts(price: Int){
+        var concertsToDisplay : [Concert] = []
+        for concert in ModelManager.myBandsConcerts {
+            if concert.price < price{
+                concertsToDisplay.append(concert)
+            }
+        }
+        concertsMapView.addAnnotations(concertsToDisplay)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,18 +113,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func filterViewButton(_ sender: Any) {
         filterView.isHidden = true
+        if priceSwitch.isOn{
+            var price = Int(priceSlider.value)
+            concertsMapView.removeAnnotations(concertsMapView.annotations)
+            loadConcerts(price: price)
+        }
     }
     @IBAction func filterButton(_ sender: Any) {
+        priceSwitch.isOn = false
+        locationSwitch.isOn = false
+        valueLabel.isHidden = true
         filterView.isHidden = false
+        priceSlider.minimumValue = 0
+        priceSlider.maximumValue = 5000
+        
     }
     @IBAction func addBandButton(_ sender: Any) {
         self.performSegue(withIdentifier: "FinderViewControllerSegueIdentifier", sender: nil)
     }
     @IBAction func activatePriceSwitch(_ sender: Any) {
         priceSlider.isEnabled = priceSwitch.isOn
+        valueLabel.isHidden = false
     }
     @IBAction func activateLocationSwitch(_ sender: Any) {
         locationSlider.isEnabled = locationSwitch.isOn
     }
     
+    @IBAction func changeValuePriceSlider(_ sender: Any) {
+        valueLabel.text = "\(Int(priceSlider.value))"
+    }
 }
