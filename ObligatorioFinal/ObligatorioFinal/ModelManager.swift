@@ -8,11 +8,28 @@
 
 import Foundation
 import MapKit
+import Firebase
+
+
 class ModelManager{
     public static var myBands:[Band] = []
     public static var myBandsConcerts:[Concert] = []
     
     public static func addData(){
+        FirebaseApp.configure()
+
+        let db = Firestore.firestore()
+        
+        db.collection("users").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
+        
         let greenDay = Band(id: 1,name: "Green Day", image: "https://www.imer.mx/reactor/wp-content/uploads/sites/40/green-day-cr-frank-maddocks-2017-billboard-1548-1548x774.jpg", gender: "Punk Rock")
         let gdArg = Concert(title: "Green Day in Argentina", locationName: "Jose Amalfitani Stadium", coordinate: CLLocationCoordinate2D(latitude: 21.283957, longitude: -157.831611), dateConcert: Utils.date(from: "2018/11/10 21:00")!, price: 800, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: myBands.count)
         
