@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		741327474A35954D8A1E5CA0 /* Pods_ObligatorioFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48547A925A7AAA06FEE766EB /* Pods_ObligatorioFinal.framework */; };
+		789232D320E35CD1009A6624 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 789232D220E35CD1009A6624 /* GoogleService-Info.plist */; };
+		789232D520E49A0B009A6624 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */; };
+		789232D720E4ADCA009A6624 /* BandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */; };
+		789232D920E4C12B009A6624 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D820E4C12B009A6624 /* SongTableViewCell.swift */; };
 		8E11FFAF20C8B52400ADED0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */; };
 		8E11FFB120C8B52400ADED0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11FFB020C8B52400ADED0D /* ViewController.swift */; };
 		8E11FFB420C8B52400ADED0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB220C8B52400ADED0D /* Main.storyboard */; };
@@ -18,7 +22,6 @@
 		8E4C6FE820D1EF650056719F /* BandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE720D1EF650056719F /* BandViewController.swift */; };
 		8E4C6FEA20D1EF830056719F /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE920D1EF830056719F /* FinderViewController.swift */; };
 		8EBE7D0A20D32FE800C1ED42 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE7D0920D32FE800C1ED42 /* ModelManager.swift */; };
-		8EBE7D0C20D333CB00C1ED42 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EBE7D0B20D333CB00C1ED42 /* GoogleService-Info.plist */; };
 		8EBE7D0E20D33ADD00C1ED42 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE7D0D20D33ADD00C1ED42 /* Utils.swift */; };
 		8ED191F020CA081D00EAAB64 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191EF20CA081D00EAAB64 /* Song.swift */; };
 		8ED191F220CA08AC00EAAB64 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F120CA08AC00EAAB64 /* Provider.swift */; };
@@ -31,6 +34,10 @@
 		263D2A6659F4CD479FCC98CB /* Pods-ObligatorioFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObligatorioFinal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ObligatorioFinal/Pods-ObligatorioFinal.debug.xcconfig"; sourceTree = "<group>"; };
 		48547A925A7AAA06FEE766EB /* Pods_ObligatorioFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObligatorioFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		503C1A7F72CF705B8023442F /* Pods-ObligatorioFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObligatorioFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObligatorioFinal/Pods-ObligatorioFinal.release.xcconfig"; sourceTree = "<group>"; };
+		789232D220E35CD1009A6624 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandCollectionViewCell.swift; sourceTree = "<group>"; };
+		789232D820E4C12B009A6624 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		8E11FFAB20C8B52400ADED0D /* ObligatorioFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObligatorioFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E11FFB020C8B52400ADED0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +50,6 @@
 		8E4C6FE720D1EF650056719F /* BandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandViewController.swift; sourceTree = "<group>"; };
 		8E4C6FE920D1EF830056719F /* FinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinderViewController.swift; sourceTree = "<group>"; };
 		8EBE7D0920D32FE800C1ED42 /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
-		8EBE7D0B20D333CB00C1ED42 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EBE7D0D20D33ADD00C1ED42 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8ED191EF20CA081D00EAAB64 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		8ED191F120CA08AC00EAAB64 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
@@ -102,12 +108,12 @@
 		8E11FFAD20C8B52400ADED0D /* ObligatorioFinal */ = {
 			isa = PBXGroup;
 			children = (
-				8EBE7D0B20D333CB00C1ED42 /* GoogleService-Info.plist */,
 				8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */,
 				8E11FFB020C8B52400ADED0D /* ViewController.swift */,
 				8E4C6FE320D1EEED0056719F /* MapViewController.swift */,
 				8E4C6FE520D1EF400056719F /* ConcertViewController.swift */,
 				8E4C6FE720D1EF650056719F /* BandViewController.swift */,
+				789232D220E35CD1009A6624 /* GoogleService-Info.plist */,
 				8E4C6FE920D1EF830056719F /* FinderViewController.swift */,
 				8E11FFB220C8B52400ADED0D /* Main.storyboard */,
 				8E11FFB520C8B52400ADED0D /* Assets.xcassets */,
@@ -120,6 +126,9 @@
 				8ED191F920CA0B7700EAAB64 /* Band.swift */,
 				8EBE7D0920D32FE800C1ED42 /* ModelManager.swift */,
 				8EBE7D0D20D33ADD00C1ED42 /* Utils.swift */,
+				789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */,
+				789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */,
+				789232D820E4C12B009A6624 /* SongTableViewCell.swift */,
 			);
 			path = ObligatorioFinal;
 			sourceTree = "<group>";
@@ -135,8 +144,7 @@
 				8E11FFA720C8B52400ADED0D /* Sources */,
 				8E11FFA820C8B52400ADED0D /* Frameworks */,
 				8E11FFA920C8B52400ADED0D /* Resources */,
-				A40DA4A20CA637DFC56D8ED0 /* [CP] Embed Pods Frameworks */,
-				19EAB749DF0EB15F4C3759B4 /* [CP] Copy Pods Resources */,
+				79B99FD9D52A0F8F1131B746 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -187,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E11FFB920C8B52400ADED0D /* LaunchScreen.storyboard in Resources */,
-				8EBE7D0C20D333CB00C1ED42 /* GoogleService-Info.plist in Resources */,
+				789232D320E35CD1009A6624 /* GoogleService-Info.plist in Resources */,
 				8E11FFB620C8B52400ADED0D /* Assets.xcassets in Resources */,
 				8E11FFB420C8B52400ADED0D /* Main.storyboard in Resources */,
 			);
@@ -196,21 +204,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		19EAB749DF0EB15F4C3759B4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ObligatorioFinal/Pods-ObligatorioFinal-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2CDEB3D95AAED6A278466993 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,27 +222,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A40DA4A20CA637DFC56D8ED0 /* [CP] Embed Pods Frameworks */ = {
+		79B99FD9D52A0F8F1131B746 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ObligatorioFinal/Pods-ObligatorioFinal-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,13 +258,16 @@
 				8ED191F220CA08AC00EAAB64 /* Provider.swift in Sources */,
 				8E4C6FE820D1EF650056719F /* BandViewController.swift in Sources */,
 				8ED191F020CA081D00EAAB64 /* Song.swift in Sources */,
+				789232D720E4ADCA009A6624 /* BandCollectionViewCell.swift in Sources */,
 				8ED191FA20CA0B7700EAAB64 /* Band.swift in Sources */,
 				8E4C6FEA20D1EF830056719F /* FinderViewController.swift in Sources */,
 				8EBE7D0E20D33ADD00C1ED42 /* Utils.swift in Sources */,
 				8EBE7D0A20D32FE800C1ED42 /* ModelManager.swift in Sources */,
+				789232D520E49A0B009A6624 /* MemberCollectionViewCell.swift in Sources */,
 				8E11FFB120C8B52400ADED0D /* ViewController.swift in Sources */,
 				8E4C6FE420D1EEED0056719F /* MapViewController.swift in Sources */,
 				8E4C6FE620D1EF400056719F /* ConcertViewController.swift in Sources */,
+				789232D920E4C12B009A6624 /* SongTableViewCell.swift in Sources */,
 				8E11FFAF20C8B52400ADED0D /* AppDelegate.swift in Sources */,
 				8ED191F820CA0A8F00EAAB64 /* Concert.swift in Sources */,
 				8ED191F420CA093E00EAAB64 /* Member.swift in Sources */,

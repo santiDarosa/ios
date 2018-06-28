@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U4g-I8-TUS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U4g-I8-TUS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -198,25 +198,25 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="76H-O0-tgZ">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BandCollectionViewCell" id="76H-O0-tgZ" customClass="BandCollectionViewCell" customModule="ObligatorioFinal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-cE-oaD">
-                                                    <rect key="frame" x="17" y="12" width="66" height="66"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6m-Yf-uUh">
+                                                    <rect key="frame" x="18.5" y="83.5" width="63.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CfA-cE-oaD">
+                                                    <rect key="frame" x="18" y="7" width="66" height="66"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="CfA-cE-oaD" secondAttribute="height" id="kQy-bR-Jjf"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6m-Yf-uUh">
-                                                    <rect key="frame" x="6.5" y="79" width="87" height="19"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -228,6 +228,10 @@
                                             <constraint firstItem="t6m-Yf-uUh" firstAttribute="centerX" secondItem="CfA-cE-oaD" secondAttribute="centerX" id="qa6-zC-c6T"/>
                                             <constraint firstItem="t6m-Yf-uUh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="76H-O0-tgZ" secondAttribute="leading" constant="5" id="tyx-Ut-wox"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="bandImageView" destination="CfA-cE-oaD" id="TPL-ha-vaO"/>
+                                            <outlet property="bandLabel" destination="t6m-Yf-uUh" id="hSe-3L-ekr"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -291,6 +295,7 @@
                         <viewLayoutGuide key="safeArea" id="t57-fP-KA9"/>
                     </view>
                     <connections>
+                        <outlet property="bandsCollectionView" destination="GTl-vo-zj7" id="2Om-qc-eBc"/>
                         <outlet property="concertImageView" destination="Rnr-0S-6vw" id="bBJ-sJ-XmE"/>
                         <outlet property="concertLabel" destination="hQL-OU-seV" id="LOI-fx-Qrh"/>
                         <outlet property="priceLabel" destination="8iz-ec-8RZ" id="Q5A-ll-Owb"/>
@@ -314,6 +319,12 @@
                                 <rect key="frame" x="0.0" y="74" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSa-PD-YZL">
+                                <rect key="frame" x="15" y="150" width="48" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="25h-E7-eFC">
                                 <rect key="frame" x="0.0" y="181" width="375" height="466"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -367,12 +378,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSa-PD-YZL">
-                                <rect key="frame" x="15" y="150" width="48" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -390,6 +395,9 @@
                         <viewLayoutGuide key="safeArea" id="mJR-8r-W4s"/>
                     </view>
                     <connections>
+                        <outlet property="bandlabel" destination="SSa-PD-YZL" id="T8s-en-ZMi"/>
+                        <outlet property="finderSearchBar" destination="05u-vg-kQy" id="3md-Sn-tJ6"/>
+                        <outlet property="searchTableView" destination="25h-E7-eFC" id="fr8-qa-uK1"/>
                         <segue destination="QU6-Pc-iSN" kind="show" id="oaJ-sD-6JK"/>
                     </connections>
                 </viewController>
@@ -400,7 +408,7 @@
         <!--Band View Controller-->
         <scene sceneID="O13-am-dcQ">
             <objects>
-                <viewController id="QU6-Pc-iSN" customClass="BandViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BandViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QU6-Pc-iSN" customClass="BandViewController" customModule="ObligatorioFinal" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FZM-XU-lMH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -433,31 +441,31 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZA6-tE-weD">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemberCollectionViewCell" id="ZA6-tE-weD" customClass="MemberCollectionViewCell" customModule="ObligatorioFinal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-N2-To2">
-                                                    <rect key="frame" x="26" y="5" width="68" height="68"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="RcS-N2-To2" secondAttribute="height" id="jKZ-HX-ESh"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqu-09-fCS">
-                                                    <rect key="frame" x="37.5" y="78" width="45" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="40" y="84" width="40.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrument" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXa-2y-vjh">
-                                                    <rect key="frame" x="19" y="99" width="83" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="23" y="102" width="74" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RcS-N2-To2">
+                                                    <rect key="frame" x="42" y="6" width="68" height="68"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="RcS-N2-To2" secondAttribute="height" id="jKZ-HX-ESh"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -472,6 +480,11 @@
                                             <constraint firstItem="HXa-2y-vjh" firstAttribute="centerX" secondItem="oqu-09-fCS" secondAttribute="centerX" id="u1W-IN-gzG"/>
                                             <constraint firstItem="RcS-N2-To2" firstAttribute="centerX" secondItem="ZA6-tE-weD" secondAttribute="centerX" id="v48-1l-M7m"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="memberImageView" destination="RcS-N2-To2" id="vT7-rI-6DU"/>
+                                            <outlet property="memberInstrumentLabel" destination="HXa-2y-vjh" id="O2f-6Z-gcR"/>
+                                            <outlet property="memberNameLabel" destination="oqu-09-fCS" id="M68-mU-c0X"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -482,16 +495,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Other bands you might like" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smh-MJ-ROI">
-                                <rect key="frame" x="10" y="536" width="206" height="21"/>
+                                <rect key="frame" x="10" y="516" width="206" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWV-Pn-At2">
-                                <rect key="frame" x="0.0" y="393" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="393" width="375" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZZw-sF-ueH">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SongTableViewCell" id="ZZw-sF-ueH" customClass="SongTableViewCell" customModule="ObligatorioFinal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZZw-sF-ueH" id="I6t-yi-gRA">
@@ -520,11 +533,14 @@
                                                 <constraint firstItem="E2h-YR-ljM" firstAttribute="centerY" secondItem="I6t-yi-gRA" secondAttribute="centerY" id="oJr-Ue-TeH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="songLabel" destination="E2h-YR-ljM" id="0dR-pO-ePI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="a98-f4-12d">
-                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="547" width="375" height="120"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ti8-6p-ZwT">
                                     <size key="itemSize" width="100" height="100"/>
@@ -533,7 +549,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="DFn-RM-Evh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BandCollectionViewCell" id="DFn-RM-Evh" customClass="BandCollectionViewCell" customModule="ObligatorioFinal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -541,14 +557,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7T4-de-fUw">
-                                                    <rect key="frame" x="17" y="12" width="66" height="66"/>
+                                                    <rect key="frame" x="20" y="15" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="7T4-de-fUw" secondAttribute="height" id="Jpw-8f-5Gt"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMJ-Et-9YJ">
-                                                    <rect key="frame" x="29" y="79" width="42" height="19"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="35" y="83.5" width="31" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -561,8 +577,12 @@
                                             <constraint firstAttribute="bottom" secondItem="UMJ-Et-9YJ" secondAttribute="bottom" constant="2" id="RWS-IY-lGP"/>
                                             <constraint firstItem="UMJ-Et-9YJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7T4-de-fUw" secondAttribute="bottom" constant="1" id="Stc-52-DR1"/>
                                             <constraint firstItem="UMJ-Et-9YJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DFn-RM-Evh" secondAttribute="leading" constant="5" id="W9g-zn-Jh6"/>
-                                            <constraint firstItem="7T4-de-fUw" firstAttribute="top" secondItem="DFn-RM-Evh" secondAttribute="top" constant="12" id="nBA-fK-6qd"/>
+                                            <constraint firstItem="7T4-de-fUw" firstAttribute="top" secondItem="DFn-RM-Evh" secondAttribute="top" constant="15" id="nBA-fK-6qd"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="bandImageView" destination="7T4-de-fUw" id="Ecp-YW-aB3"/>
+                                            <outlet property="bandLabel" destination="UMJ-Et-9YJ" id="V5h-6f-VPg"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -586,7 +606,7 @@
                             <constraint firstItem="gWV-Pn-At2" firstAttribute="leading" secondItem="mAK-1C-sdI" secondAttribute="leading" id="FQC-fu-rCV"/>
                             <constraint firstItem="jba-9D-S8w" firstAttribute="leading" secondItem="XaT-nA-d3a" secondAttribute="leading" id="Ms9-eX-vte"/>
                             <constraint firstItem="yP0-Hd-ReS" firstAttribute="trailing" secondItem="mAK-1C-sdI" secondAttribute="trailing" id="NP4-pr-z1k"/>
-                            <constraint firstItem="gWV-Pn-At2" firstAttribute="height" secondItem="a98-f4-12d" secondAttribute="height" id="OfK-0Z-qqP"/>
+                            <constraint firstItem="gWV-Pn-At2" firstAttribute="height" secondItem="a98-f4-12d" secondAttribute="height" constant="-10" id="OfK-0Z-qqP"/>
                             <constraint firstItem="smh-MJ-ROI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gWV-Pn-At2" secondAttribute="bottom" constant="10" id="Qnf-cz-sJd"/>
                             <constraint firstItem="mAK-1C-sdI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XaT-nA-d3a" secondAttribute="trailing" constant="5" id="SvC-19-nzl"/>
                             <constraint firstItem="a98-f4-12d" firstAttribute="top" secondItem="smh-MJ-ROI" secondAttribute="bottom" constant="10" id="TVw-nt-fpI"/>
@@ -595,7 +615,7 @@
                             <constraint firstItem="gWV-Pn-At2" firstAttribute="trailing" secondItem="mAK-1C-sdI" secondAttribute="trailing" id="aeZ-lQ-UHD"/>
                             <constraint firstItem="yP0-Hd-ReS" firstAttribute="bottom" secondItem="mAK-1C-sdI" secondAttribute="centerY" id="af5-cw-p0K"/>
                             <constraint firstItem="mAK-1C-sdI" firstAttribute="bottom" secondItem="a98-f4-12d" secondAttribute="bottom" id="eph-V9-xAP"/>
-                            <constraint firstItem="a98-f4-12d" firstAttribute="height" secondItem="FZM-XU-lMH" secondAttribute="height" multiplier="0.15" id="f4A-px-Qux"/>
+                            <constraint firstItem="a98-f4-12d" firstAttribute="height" secondItem="FZM-XU-lMH" secondAttribute="height" multiplier="0.18" id="f4A-px-Qux"/>
                             <constraint firstItem="jba-9D-S8w" firstAttribute="top" secondItem="yP0-Hd-ReS" secondAttribute="bottom" constant="3" id="fG3-hE-ErW"/>
                             <constraint firstItem="a98-f4-12d" firstAttribute="trailing" secondItem="mAK-1C-sdI" secondAttribute="trailing" id="iCN-Sf-NgA"/>
                             <constraint firstItem="P6t-8R-5TE" firstAttribute="trailing" secondItem="mAK-1C-sdI" secondAttribute="trailing" id="ogQ-C0-a7C"/>
@@ -612,6 +632,9 @@
                     <connections>
                         <outlet property="bandImageView" destination="iZH-GE-xp9" id="co0-Jw-rgU"/>
                         <outlet property="bandLabel" destination="ZOl-57-YCv" id="wMf-C7-FWH"/>
+                        <outlet property="bandsCollectionView" destination="a98-f4-12d" id="BtD-cl-PWi"/>
+                        <outlet property="membersCollectionView" destination="yP0-Hd-ReS" id="GC3-h8-zuI"/>
+                        <outlet property="songsTableView" destination="gWV-Pn-At2" id="vl8-H2-Gtw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAO-n0-wvl" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -25,11 +25,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // set initial location in Honolulu
-        let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-        centerMapOnLocation(location: initialLocation)
-        // Do any additional setup after loading the view, typically from a nib.
-        // show concert on map
+        //let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        //centerMapOnLocation(location: initialLocation)
         concertsMapView.delegate = self
         ModelManager.addData()
         loadConcerts(price: 5000)
@@ -39,13 +36,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    let regionRadius: CLLocationDistance = 1000
+    
+    /*let regionRadius: CLLocationDistance = 1000
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius, regionRadius)
         concertsMapView.setRegion(coordinateRegion, animated: true)
-    }
+    }*/
     
     //show the annotations (esto usar para ver los conciertos de las bandas)
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

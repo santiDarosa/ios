@@ -1,0 +1,6 @@
+framework module Pods_ObligatorioFinal {
+  umbrella header "Pods-ObligatorioFinal-umbrella.h"
+
+  export *
+  module * { export * }
+}
