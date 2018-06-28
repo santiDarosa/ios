@@ -24,9 +24,11 @@ class ConcertViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let bandConcert = ModelManager.myBands[(concert?.bandId)!]
-        selectedBand = bandConcert
-        concertImageView.sd_setImage(with: URL(string: bandConcert.imageBand), placeholderImage: UIImage(named: bandConcert.nameBand))
+        let bandConcert = ModelManager.dictionaryBands[(concert?.bandId)!]
+        if let bandConcert = bandConcert{
+            selectedBand = bandConcert
+            concertImageView.sd_setImage(with: URL(string: bandConcert.imageBand), placeholderImage: UIImage(named: bandConcert.nameBand))
+        }
         
         
         concertLabel.text = concert?.title
@@ -61,11 +63,10 @@ class ConcertViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     func findingSimilarBands(){
-        let myBand = ModelManager.myBands[(concert?.bandId)!]
-        for band in ModelManager.myBands{
-            if band.gender == myBand.gender && band.idBand != myBand.idBand{
-                self.similarBands.append(band)
-            }
+        var band = ModelManager.dictionaryBands[(concert?.bandId)!]
+        if let band = band{
+            similarBands = ModelManager.searchData(genderBand: band.gender)
+            
         }
     }
     

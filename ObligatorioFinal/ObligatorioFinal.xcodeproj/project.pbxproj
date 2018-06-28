@@ -12,8 +12,10 @@
 		789232D520E49A0B009A6624 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */; };
 		789232D720E4ADCA009A6624 /* BandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */; };
 		789232D920E4C12B009A6624 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D820E4C12B009A6624 /* SongTableViewCell.swift */; };
+		789232DB20E4C9E4009A6624 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 789232DA20E4C9E4009A6624 /* project.json */; };
+		789232DE20E51365009A6624 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191EF20CA081D00EAAB64 /* Song.swift */; };
+		789232E020E56C12009A6624 /* BandTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232DF20E56C12009A6624 /* BandTableViewCell.swift */; };
 		8E11FFAF20C8B52400ADED0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */; };
-		8E11FFB120C8B52400ADED0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11FFB020C8B52400ADED0D /* ViewController.swift */; };
 		8E11FFB420C8B52400ADED0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB220C8B52400ADED0D /* Main.storyboard */; };
 		8E11FFB620C8B52400ADED0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB520C8B52400ADED0D /* Assets.xcassets */; };
 		8E11FFB920C8B52400ADED0D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11FFB720C8B52400ADED0D /* LaunchScreen.storyboard */; };
@@ -23,7 +25,6 @@
 		8E4C6FEA20D1EF830056719F /* FinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4C6FE920D1EF830056719F /* FinderViewController.swift */; };
 		8EBE7D0A20D32FE800C1ED42 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE7D0920D32FE800C1ED42 /* ModelManager.swift */; };
 		8EBE7D0E20D33ADD00C1ED42 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBE7D0D20D33ADD00C1ED42 /* Utils.swift */; };
-		8ED191F020CA081D00EAAB64 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191EF20CA081D00EAAB64 /* Song.swift */; };
 		8ED191F220CA08AC00EAAB64 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F120CA08AC00EAAB64 /* Provider.swift */; };
 		8ED191F420CA093E00EAAB64 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F320CA093E00EAAB64 /* Member.swift */; };
 		8ED191F820CA0A8F00EAAB64 /* Concert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED191F720CA0A8F00EAAB64 /* Concert.swift */; };
@@ -38,9 +39,10 @@
 		789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandCollectionViewCell.swift; sourceTree = "<group>"; };
 		789232D820E4C12B009A6624 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		789232DA20E4C9E4009A6624 /* project.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = project.json; sourceTree = "<group>"; };
+		789232DF20E56C12009A6624 /* BandTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandTableViewCell.swift; sourceTree = "<group>"; };
 		8E11FFAB20C8B52400ADED0D /* ObligatorioFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObligatorioFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8E11FFB020C8B52400ADED0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8E11FFB320C8B52400ADED0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E11FFB520C8B52400ADED0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E11FFB820C8B52400ADED0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,10 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */,
-				8E11FFB020C8B52400ADED0D /* ViewController.swift */,
 				8E4C6FE320D1EEED0056719F /* MapViewController.swift */,
 				8E4C6FE520D1EF400056719F /* ConcertViewController.swift */,
 				8E4C6FE720D1EF650056719F /* BandViewController.swift */,
+				789232DA20E4C9E4009A6624 /* project.json */,
 				789232D220E35CD1009A6624 /* GoogleService-Info.plist */,
 				8E4C6FE920D1EF830056719F /* FinderViewController.swift */,
 				8E11FFB220C8B52400ADED0D /* Main.storyboard */,
@@ -129,6 +131,7 @@
 				789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */,
 				789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */,
 				789232D820E4C12B009A6624 /* SongTableViewCell.swift */,
+				789232DF20E56C12009A6624 /* BandTableViewCell.swift */,
 			);
 			path = ObligatorioFinal;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			files = (
 				8E11FFB920C8B52400ADED0D /* LaunchScreen.storyboard in Resources */,
 				789232D320E35CD1009A6624 /* GoogleService-Info.plist in Resources */,
+				789232DB20E4C9E4009A6624 /* project.json in Resources */,
 				8E11FFB620C8B52400ADED0D /* Assets.xcassets in Resources */,
 				8E11FFB420C8B52400ADED0D /* Main.storyboard in Resources */,
 			);
@@ -257,15 +261,15 @@
 			files = (
 				8ED191F220CA08AC00EAAB64 /* Provider.swift in Sources */,
 				8E4C6FE820D1EF650056719F /* BandViewController.swift in Sources */,
-				8ED191F020CA081D00EAAB64 /* Song.swift in Sources */,
 				789232D720E4ADCA009A6624 /* BandCollectionViewCell.swift in Sources */,
 				8ED191FA20CA0B7700EAAB64 /* Band.swift in Sources */,
 				8E4C6FEA20D1EF830056719F /* FinderViewController.swift in Sources */,
 				8EBE7D0E20D33ADD00C1ED42 /* Utils.swift in Sources */,
 				8EBE7D0A20D32FE800C1ED42 /* ModelManager.swift in Sources */,
 				789232D520E49A0B009A6624 /* MemberCollectionViewCell.swift in Sources */,
-				8E11FFB120C8B52400ADED0D /* ViewController.swift in Sources */,
 				8E4C6FE420D1EEED0056719F /* MapViewController.swift in Sources */,
+				789232DE20E51365009A6624 /* Song.swift in Sources */,
+				789232E020E56C12009A6624 /* BandTableViewCell.swift in Sources */,
 				8E4C6FE620D1EF400056719F /* ConcertViewController.swift in Sources */,
 				789232D920E4C12B009A6624 /* SongTableViewCell.swift in Sources */,
 				8E11FFAF20C8B52400ADED0D /* AppDelegate.swift in Sources */,

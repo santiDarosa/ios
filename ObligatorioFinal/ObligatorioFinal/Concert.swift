@@ -23,7 +23,7 @@ class Concert:NSObject,MKAnnotation{
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
-
+        
         self.dateConcert = dateConcert
         self.price = price
         self.provider = provider

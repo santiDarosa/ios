@@ -13,77 +13,173 @@ import FirebaseDatabase
 
 
 class ModelManager{
-    public static var myBands:[Band] = []
-    public static var myBandsConcerts:[Concert] = []
+    public static var staticBands:[Band] = []
+    public static var staticBandsConcerts:[Concert] = []
+    public static var dictionaryBands = Dictionary<Int, Band>()
+    public static var favoriteBands:[Band] = []
+    public static var dictionaryFavoriteBands = Dictionary<Int, Band>()
+    //Controla repetidos
+    private static var dictionaryTotal = Dictionary<String, Int>()
     
     
-    public static func searchData(text: String){
+    public static func searchData(nameBand: String) -> [Band]{
+        var myBands: [Band] = []
+        var myBand: Band? = nil
         
+        if let path = Bundle.main.path(forResource: "project", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>,
+                    let bands = jsonResult["bands"] as? [Dictionary<String, AnyObject>],
+                    let concerts = jsonResult["concerts"] as? [Dictionary<String, AnyObject>],
+                    let members = jsonResult["members"] as? [Dictionary<String, AnyObject>],
+                    let songs = jsonResult["songs"] as? [Dictionary<String, AnyObject>]{
+                    for band in bands{
+                        if band["name_band"] as! String == nameBand{
+                            if dictionaryBands[band["id_band"] as! Int] != nil{
+                                return [dictionaryBands[band["id_band"] as! Int]!]
+                            } else{
+                                myBand = Band(id: band["id_band"] as! Int, name: band["name_band"] as! String, image: band["image_band"] as! String, gender: band["gender"] as! String)
+                                myBands.append(myBand!)
+                                staticBands.append(myBand!)
+                                dictionaryBands.updateValue(myBand!, forKey: myBand!.idBand)
+                            }
+                        }
+                    }
+                    if let myBand = myBand{
+                        for concert in concerts{
+                            if myBand.idBand == concert["id_band"] as! Int && dictionaryTotal[concert["title"] as! String] != 1{
+                                let finalConcert = Concert(title: concert["title"] as! String, locationName: concert["location_name"] as! String, coordinate: CLLocationCoordinate2D(latitude: (concert["location"]!)["lat"] as! Double,longitude: (concert["location"]!)["lon"] as! Double), dateConcert: Utils.date(from: (concert["date"] as! String))!, price: concert["price"] as! Int, provider: Provider(name: (concert["provider"]!)["name"] as! String,url: (concert["provider"]!)["url"] as! String), bandId: concert["id_band"] as! Int)
+                                myBand.addConcert(concert: finalConcert)
+                                dictionaryTotal.updateValue(1, forKey: finalConcert.title!)
+                            }
+                        }
+                        for member in members{
+                            if myBand.idBand == member["id_band"] as! Int && dictionaryTotal[member["member_name"] as! String] != 1{
+                                let finalMember = Member(idBand: member["id_band"] as! Int, name: member["member_name"] as! String , photo: member["member_photo"] as! String, instrument: member["member_instrument"] as! String)
+                                myBand.addMember(member: finalMember)
+                                dictionaryTotal.updateValue(1, forKey: finalMember.memberName)
+                            }
+                        }
+                        for song in songs{
+                            if myBand.idBand == song["id_band"] as! Int && dictionaryTotal[song["song_name"] as! String] != 1{
+                                let finalSong = Song(idBand: song["id_band"] as! Int, name: song["song_name"] as! String , url: song["song_url"] as! String)
+                                myBand.addSong(song: finalSong)
+                                dictionaryTotal.updateValue(1, forKey: finalSong.songName)
+                            }
+                        }
+                    }else{
+                        return myBands
+                    }
+                }
+            } catch {
+                // handle error
+            }
+        }
+        return myBands
+    }
+    
+    public static func searchData(genderBand: String) -> [Band]{
+        var myBand: Band? = nil
+        var myBands: [Band] = []
+        var myDiccBands = Dictionary<Int, Band>()
+        
+        if let path = Bundle.main.path(forResource: "project", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>,
+                    let bands = jsonResult["bands"] as? [Dictionary<String, AnyObject>],
+                    let concerts = jsonResult["concerts"] as? [Dictionary<String, AnyObject>],
+                    let members = jsonResult["members"] as? [Dictionary<String, AnyObject>],
+                    let songs = jsonResult["songs"] as? [Dictionary<String, AnyObject>]{
+                    for band in bands{
+                        if band["gender"] as! String == genderBand{
+                            if dictionaryBands[band["id_band"] as! Int] != nil{
+                                myBand = (dictionaryBands[band["id_band"] as! Int]!)
+                                myBands.append(myBand!)
+                                myDiccBands.updateValue(myBand!, forKey: myBand!.idBand)
+                            } else{
+                                myBand = Band(id: band["id_band"] as! Int, name: band["name_band"] as! String, image: band["image_band"] as! String, gender: band["gender"] as! String)
+                                myBands.append(myBand!)
+                                staticBands.append(myBand!)
+                                dictionaryBands.updateValue(myBand!, forKey: myBand!.idBand)
+                                myDiccBands.updateValue(myBand!, forKey: myBand!.idBand)
+                            }
+                        }
+                    }
+                    for concert in concerts{
+                        
+                        if myDiccBands[concert["id_band"] as! Int] != nil && dictionaryTotal[concert["title"] as! String] != 1{
+                            myBand = myDiccBands[concert["id_band"] as! Int]
+                                let finalConcert = Concert(title: concert["title"] as! String, locationName: concert["location_name"] as! String, coordinate: CLLocationCoordinate2D(latitude: (concert["location"]!)["lat"] as! Double,longitude: (concert["location"]!)["lon"] as! Double), dateConcert: Utils.date(from: (concert["date"] as! String))!, price: concert["price"] as! Int, provider: Provider(name: (concert["provider"]!)["name"] as! String,url: (concert["provider"]!)["url"] as! String), bandId: concert["id_band"] as! Int)
+                            myBand?.addConcert(concert: finalConcert)
+                            dictionaryTotal.updateValue(1, forKey: finalConcert.title!)
+                            }
+                        }
+                        for member in members{
+                            if myDiccBands[member["id_band"] as! Int] != nil && dictionaryTotal[member["member_name"] as! String] != 1{
+                                myBand = myDiccBands[member["id_band"] as! Int]
+                                let finalMember = Member(idBand: member["id_band"] as! Int, name: member["member_name"] as! String , photo: member["member_photo"] as! String, instrument: member["member_instrument"] as! String)
+                                myBand?.addMember(member: finalMember)
+                                dictionaryTotal.updateValue(1, forKey: finalMember.memberName)
+                            }
+                        }
+                        for song in songs{
+                            if myDiccBands[song["id_band"] as! Int] != nil && dictionaryTotal[song["song_name"] as! String] != 1{
+                                myBand = myDiccBands[song["id_band"] as! Int]
+                                let finalSong = Song(idBand: song["id_band"] as! Int, name: song["song_name"] as! String , url: song["song_url"] as! String)
+                                myBand?.addSong(song: finalSong)
+                                dictionaryTotal.updateValue(1, forKey: finalSong.songName)
+                            }
+                        }
+                    
+                }
+            } catch {
+                // handle error
+            }
+        }
+        return myBands
     }
     
     public static func addData(){
-        let band = Band(id: 0,name: "Green Day", image: "https://www.imer.mx/reactor/wp-content/uploads/sites/40/green-day-cr-frank-maddocks-2017-billboard-1548-1548x774.jpg", gender: "Punk Rock")
         
-        let gdArg = Concert(title: "Green Day in Argentina", locationName: "Jose Amalfitani Stadium", coordinate: CLLocationCoordinate2D(latitude: -34.635538, longitude: -58.520868), dateConcert: Utils.date(from: "2018/11/10 21:00")!, price: 800, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: 0)
-        
-        let gdBr = Concert(title: "Green Day in Brazil", locationName: "Beira Rio Stadium", coordinate: CLLocationCoordinate2D(latitude: -30.065671, longitude: -51.236062), dateConcert: Utils.date(from: "2018/11/13 21:00")!, price: 500, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: 0)
-        
-        let gdUy = Concert(title: "Green Day in Uruguay", locationName: "Estadio Centenario", coordinate: CLLocationCoordinate2D(latitude: -34.894564, longitude: -56.152807), dateConcert: Utils.date(from: "2018/11/16 21:00")!, price: 1000, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: 0)
-        
-        let bja = Member(name: "Billie Joe Armstrong", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/RiP2013_GreenDay_Billie_Joe_Armstrong_0021.jpg/220px-RiP2013_GreenDay_Billie_Joe_Armstrong_0021.jpg", instrument: "Singer, Leader Guitar")
-        let md = Member(name: "Mike Dirnt", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Mike_Dirnt_Oslo_2017.jpg/270px-Mike_Dirnt_Oslo_2017.jpg", instrument: "Bass")
-        let tc = Member(name: "Tre Cool", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/RiP2013_GreenDay_Tre_Cool_0002.jpg/260px-RiP2013_GreenDay_Tre_Cool_0002.jpg", instrument: "Drums")
-        let jw = Member(name: "Jason White", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/The_Big_Cats_in_Little_Rock_2008_1.jpg/250px-The_Big_Cats_in_Little_Rock_2008_1.jpg", instrument: "Rhytm Guitar")
-        
-        let ai = Song(name: "American Idiot", url: "https://www.youtube.com/watch?v=Ee_uujKuJMI")
-        let jos = Song(name: "Jesus of Suburbia", url: "https://www.youtube.com/watch?v=lPLvBO_2Gn0")
-        
-        let red = Band(id: 1,name: "Los Redonditos de Ricota", image: "https://www.eldiario24.com/d24ar/fotos/notas/2016/10/05/384917_20161005103257.jpg", gender: "Punk Rock")
-        
-        let rdOl = Concert(title: "Patricio Rey en Olavarria", locationName: "Olavarria", coordinate: CLLocationCoordinate2D(latitude: -36.913350, longitude: -60.346776), dateConcert: Utils.date(from: "2018/11/21 20:00")!, price: 1200, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: 1)
-        
-        let rdtn = Concert(title: "Patricio Rey en Tandil", locationName: "Tandil", coordinate: CLLocationCoordinate2D(latitude: -37.339361, longitude: -59.136522), dateConcert: Utils.date(from: "2018/12/21 21:30")!, price: 250, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: 1)
-        
-        let rdnu = Concert(title: "Patricio Rey en el Monumental", locationName: "Monumental de Nunez", coordinate: CLLocationCoordinate2D(latitude: -34.545068, longitude: -58.449764), dateConcert: Utils.date(from: "2018/09/16 23:00")!, price: 700, provider: Provider(name:"RedUTS",url:"reduts.com.uy"), bandId: 1)
-        
-        let cis = Member(name: "Indio Solari", photo: "https://assets.diarioregistrado.com/media-photo_5b16eb6d03e8eb343c9fdd93_640w.jpeg", instrument: "Singer")
-        let skay = Member(name: "Skay Bellinson", photo: "https://i.ytimg.com/vi/AzvGWogjpRY/hqdefault.jpg", instrument: "Guitar")
-        
-        let af = Song(name: "Un poco de amor frances", url: "https://www.youtube.com/watch?v=tMVSw2xS3sA")
-        let lbp = Song(name: "La Bestia Pop", url: "https://www.youtube.com/watch?v=BRTQgZr633I")
-        
-        band.addConcert(concert: gdArg)
-        band.addConcert(concert: gdBr)
-        band.addConcert(concert: gdUy)
-        
-        band.addMember(member: bja)
-        band.addMember(member: md)
-        band.addMember(member: tc)
-        band.addMember(member: jw)
-        
-        band.addSong(song: ai)
-        band.addSong(song: jos)
-        
-        myBands.append(band)
-        for concert in band.concertsBand{
-            myBandsConcerts.append(concert)
+        if let path = Bundle.main.path(forResource: "project", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                if let jsonResult = jsonResult as? Dictionary<String, AnyObject>, let bands = jsonResult["bands"] as? [Dictionary<String, AnyObject>],
+                let concerts = jsonResult["concerts"] as? [Dictionary<String, AnyObject>],
+                let members = jsonResult["members"] as? [Dictionary<String, AnyObject>],
+                let songs = jsonResult["songs"] as? [Dictionary<String, AnyObject>]{
+                    for band in bands{
+                        let finalBand = Band(id: band["id_band"] as! Int, name: band["name_band"] as! String, image: band["image_band"] as! String, gender: band["gender"] as! String)
+                        staticBands.append(finalBand)
+                        dictionaryBands.updateValue(finalBand, forKey: finalBand.idBand)
+                    }
+                    for concert in concerts{
+                        let finalConcert = Concert(title: concert["title"] as! String, locationName: concert["location_name"] as! String, coordinate: CLLocationCoordinate2D(latitude: (concert["location"]!)["lat"] as! Double,longitude: (concert["location"]!)["lon"] as! Double), dateConcert: Utils.date(from: (concert["date"] as! String))!, price: concert["price"] as! Int, provider: Provider(name: (concert["provider"]!)["name"] as! String,url: (concert["provider"]!)["url"] as! String), bandId: concert["id_band"] as! Int)
+                        let concertBand = dictionaryBands[finalConcert.bandId]
+                        concertBand?.addConcert(concert: finalConcert)
+                    }
+                    for member in members{
+                        let finalMember = Member(idBand: member["id_band"] as! Int, name: member["member_name"] as! String , photo: member["member_photo"] as! String, instrument: member["member_instrument"] as! String)
+                        let memberBand = dictionaryBands[finalMember.idBand]
+                        memberBand?.addMember(member: finalMember)
+                    }
+                    for song in songs{
+                        let finalSong = Song(idBand: song["id_band"] as! Int, name: song["song_name"] as! String , url: song["song_url"] as! String)
+                        let songBand = dictionaryBands[finalSong.idBand]
+                        songBand?.addSong(song: finalSong)
+                    }
+                }
+                else{
+                    print("no anda")
+                }
+            } catch {
+                // handle error
+            }
         }
-        
-        red.addConcert(concert: rdnu)
-        red.addConcert(concert: rdOl)
-        red.addConcert(concert: rdtn)
-        
-        red.addMember(member: cis)
-        red.addMember(member: skay)
-        
-        red.addSong(song: af)
-        red.addSong(song: lbp)
-        
-        myBands.append(red)
-        for concert in red.concertsBand{
-            myBandsConcerts.append(concert)
-        }
-        
     }
-    
 }

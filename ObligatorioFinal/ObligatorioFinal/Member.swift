@@ -12,10 +12,12 @@ class Member{
     let memberName: String
     var memberPhoto: String
     var memberInstrument: String
+    let idBand: Int
     
-    init(name: String, photo: String, instrument: String) {
+    init(idBand: Int, name: String, photo: String, instrument: String) {
         self.memberName = name
         self.memberPhoto = photo
         self.memberInstrument = instrument
+        self.idBand = idBand
     }
 }

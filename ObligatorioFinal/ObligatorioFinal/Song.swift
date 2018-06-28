@@ -11,9 +11,11 @@ import Foundation
 class Song{
     let songName: String
     var songURL: String
+    var idBand: Int
     
-    init(name: String, url: String) {
+    init(idBand: Int, name: String, url: String) {
         self.songName = name
         self.songURL = url
+        self.idBand = idBand
     }
 }

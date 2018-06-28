@@ -56,10 +56,9 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func findingSimilarBands(){
-        for band in ModelManager.myBands{
-            if band.gender == self.band!.gender && band.idBand != self.band?.idBand{
-                self.similarBands.append(band)
-            }
+        if let band = band{
+            similarBands = ModelManager.searchData(genderBand: band.gender)
+            
         }
     }
     
@@ -142,5 +141,24 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
         cell.songLabel.text = song?.songName
         
         return cell
+    }
+    @IBAction func addBand(_ sender: Any) {
+        
+        if let band = self.band{
+            if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
+                let alert = UIAlertController(title: "You had selected this band already!", message: "The band is in your favourite list already", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+            }
+            else{
+                for concert in band.concertsBand{
+                    ModelManager.favoriteBands.append(band)
+                    ModelManager.staticBandsConcerts.append(concert)
+                    ModelManager.dictionaryFavoriteBands.updateValue(band, forKey: band.idBand)
+                }
+                
+            }
+        }
     }
 }

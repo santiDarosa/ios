@@ -8,28 +8,31 @@
 
 import UIKit
 
-class FinderViewController: UIViewController {
+class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var bandsTableView: UITableView!
+    @IBOutlet weak var searchSwitch: UISwitch!
+    @IBOutlet weak var searchLabel: UILabel!
     @IBOutlet weak var bandlabel: UILabel!
     @IBOutlet weak var finderSearchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
     
-    let searchController = UISearchController(searchResultsController: nil)
+    var selectedBand: Band? = nil
+    var bandsArray: [Band] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        ModelManager.searchData(text: "GREEN DAY");
+        bandsTableView.delegate = self
+        bandsTableView.dataSource = self
+        bandsTableView.reloadData()
         
-        
-        
-        
-
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Bands"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationViewController = segue.destination as? BandViewController {
+            destinationViewController.band = selectedBand
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,47 +40,82 @@ class FinderViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return searchController.searchBar.text?.isEmpty ?? true
-    }/*
-    
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        filteredCandies = candies.filter({( candy : Candy) -> Bool in
-            return candy.name.lowercased().contains(searchText.lowercased())
-        })
-        
-        tableView.reloadData()
-    }
-    
-    func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
-    }
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering() {
-            return filteredCandies.count
-        }
-        return 0
+        return bandsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let candy: Candy
-        if isFiltering() {
-            candy = filteredCandies[indexPath.row]
-        } else {
-            candy = candies[indexPath.row]
-        }
-        cell.textLabel!.text = candy.name
-        cell.detailTextLabel!.text = candy.category
+        let cell = bandsTableView.dequeueReusableCell(withIdentifier: "BandTableViewCell", for: indexPath) as! BandTableViewCell
+        let band = bandsArray[indexPath.row]
+        cell.bandLabel.text = band.nameBand
+        cell.genderLabel.text = band.gender
+        cell.bandImageView.sd_setImage(with: URL(string: band.imageBand), placeholderImage: UIImage(named: band.nameBand))
+        cell.addButton.addTarget(self, action: #selector(self.addBand(_:)), for: .touchUpInside)
+        
         return cell
-    }*/
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedBand = bandsArray[indexPath.row]
+        self.performSegue(withIdentifier: "BandViewControllerSegueIdentifier", sender: nil)
+    }
+    
+    @objc func addBand(_ sender: UIButton){
+        let point = sender.convert(CGPoint.zero, to: bandsTableView as UIView)
+        let indexPath: IndexPath! = bandsTableView.indexPathForRow(at: point)
+        let band = bandsArray[indexPath.row]
+    
+        if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
+            let alert = UIAlertController(title: "You had selected this band already!", message: "The band is in your favourite list already", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else{
+            for concert in band.concertsBand{
+                ModelManager.favoriteBands.append(band)
+                ModelManager.staticBandsConcerts.append(concert)
+                ModelManager.dictionaryFavoriteBands.updateValue(band, forKey: band.idBand)
+            }
+        
+        }
+
+    }
+    
+    @IBAction func switchChange(_ sender: Any) {
+        if searchSwitch.isOn{
+            searchLabel.text = "Search for gender"
+        }else{
+            searchLabel.text = "Search for name"
+        }
+    }
+    
+    @IBAction func findElements(_ sender: Any) {
+        let searchText = finderSearchBar.text
+        
+        if (searchText?.isEmpty)!{
+            let alert = UIAlertController(title: "Search bar is empty!", message: "Please, search something.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            if let searchText = searchText{
+                if searchSwitch.isOn{
+                    bandsArray = ModelManager.searchData(genderBand: searchText)
+                } else{
+                    bandsArray = ModelManager.searchData(nameBand: searchText)
+                }
+            }
+        }
+        bandsTableView.reloadData()
+        if bandsArray.isEmpty{
+            let alert = UIAlertController(title: "Band not found", message: "Sorry! The band not exists.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     
 }
-extension FinderViewController: UISearchResultsUpdating {
-    // MARK: - UISearchResultsUpdating Delegate
-    func updateSearchResults(for searchController: UISearchController) {
-        // TODO
-    }
-}
+
