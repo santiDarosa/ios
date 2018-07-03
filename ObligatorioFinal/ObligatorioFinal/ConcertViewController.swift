@@ -30,6 +30,7 @@ class ConcertViewController: UIViewController, UICollectionViewDataSource, UICol
             concertImageView.sd_setImage(with: URL(string: bandConcert.imageBand), placeholderImage: UIImage(named: bandConcert.nameBand))
         }
         
+        view.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
         
         concertLabel.text = concert?.title
         priceLabel.text = "\(concert!.price)"
@@ -42,14 +43,16 @@ class ConcertViewController: UIViewController, UICollectionViewDataSource, UICol
         
         bandsCollectionView.delegate = self
         bandsCollectionView.dataSource = self
-        bandsCollectionView.reloadData()
+        bandsCollectionView.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
         
-        // Do any additional setup after loading the view, typically from a nib.
+        DispatchQueue.main.async {
+            self.bandsCollectionView.reloadData()
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @objc func didSelectImage() {
@@ -65,8 +68,12 @@ class ConcertViewController: UIViewController, UICollectionViewDataSource, UICol
     func findingSimilarBands(){
         var band = ModelManager.dictionaryBands[(concert?.bandId)!]
         if let band = band{
-            similarBands = ModelManager.searchData(genderBand: band.gender)
-            
+            let arrayBands = ModelManager.searchData(genderBand: band.gender)
+            if let arrayBands = arrayBands{
+                similarBands = arrayBands
+            } else {
+                similarBands = []
+            }
         }
     }
     

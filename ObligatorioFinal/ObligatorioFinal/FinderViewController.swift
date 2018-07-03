@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Microfutures
 
 class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,7 +16,6 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var searchLabel: UILabel!
     @IBOutlet weak var bandlabel: UILabel!
     @IBOutlet weak var finderSearchBar: UISearchBar!
-    @IBOutlet weak var searchTableView: UITableView!
     
     var selectedBand: Band? = nil
     var bandsArray: [Band] = []
@@ -23,10 +23,21 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
+        
+        finderSearchBar.tintColor = .green
+        finderSearchBar.barTintColor = .green
+        bandsTableView.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
+        bandsTableView.separatorStyle = .none
+
         bandsTableView.delegate = self
         bandsTableView.dataSource = self
-        bandsTableView.reloadData()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        bandsTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,6 +64,12 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.genderLabel.text = band.gender
         cell.bandImageView.sd_setImage(with: URL(string: band.imageBand), placeholderImage: UIImage(named: band.nameBand))
         cell.addButton.addTarget(self, action: #selector(self.addBand(_:)), for: .touchUpInside)
+        cell.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
+        if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
+            cell.addButton.setBackgroundImage( #imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
+        } else {
+            cell.addButton.setBackgroundImage( #imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
+        }
         
         return cell
     }
@@ -68,20 +85,13 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let band = bandsArray[indexPath.row]
     
         if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
-            let alert = UIAlertController(title: "You had selected this band already!", message: "The band is in your favourite list already", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-            
+            ModelManager.deleteFavoriteBand(band: band)
+            sender.setBackgroundImage(#imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
         }
         else{
-            for concert in band.concertsBand{
-                ModelManager.favoriteBands.append(band)
-                ModelManager.staticBandsConcerts.append(concert)
-                ModelManager.dictionaryFavoriteBands.updateValue(band, forKey: band.idBand)
-            }
-        
+            ModelManager.addFavoriteBand(band: band)
+            sender.setBackgroundImage(#imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
         }
-
     }
     
     @IBAction func switchChange(_ sender: Any) {
@@ -102,13 +112,22 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }else{
             if let searchText = searchText{
                 if searchSwitch.isOn{
-                    bandsArray = ModelManager.searchData(genderBand: searchText)
+                    let myBands = ModelManager.searchData(genderBand: searchText)
+                    if let myBands = myBands{
+                        bandsArray = myBands
+                    } else {
+                        bandsArray = []
+                    }
                 } else{
-                    bandsArray = ModelManager.searchData(nameBand: searchText)
+                    let myBands = ModelManager.searchData(nameBand: searchText)
+                    bandsArray = myBands
                 }
             }
         }
-        bandsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.bandsTableView.reloadData()
+        }
+        
         if bandsArray.isEmpty{
             let alert = UIAlertController(title: "Band not found", message: "Sorry! The band not exists.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
@@ -117,5 +136,6 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     
-}
 
+
+}

@@ -23,17 +23,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ModelManager.searchData()
         concertsMapView.delegate = self
+        filterView.backgroundColor = UIColor(displayP3Red: 0.15, green: 0.15, blue: 0.08, alpha: 0.90)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if ModelManager.staticBandsConcerts.isEmpty{
+        concertsMapView.removeAnnotations(concertsMapView.annotations)
+        let concerts = self.loadConcerts(price: 5000)
+        if concerts.isEmpty{
             let alert = UIAlertController(title: "No concerts to display!", message: "Sorry! Try to add new bands!", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-        }else{
-            self.loadConcerts(price: 5000)
         }
     }
     
@@ -66,14 +68,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    func loadConcerts(price: Int){
+    func loadConcerts(price: Int) -> [Concert]{
         var concertsToDisplay : [Concert] = []
-        for concert in ModelManager.staticBandsConcerts {
-            if concert.price < price{
-                concertsToDisplay.append(concert)
+        for concertList in ModelManager.staticBandsConcerts.values {
+            for concert in concertList{
+                if concert.price < price{
+                    concertsToDisplay.append(concert)
+                }
             }
         }
         concertsMapView.addAnnotations(concertsToDisplay)
+        return concertsToDisplay
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,32 +87,22 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    //esto es para pedirle al user su ubicacion
-    /*
-    let locationManager = CLLocationManager()
-    func checkLocationAuthorizationStatus() {
-        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-            concertsMapView.showsUserLocation = true
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        checkLocationAuthorizationStatus()
-    }
-    */
     
     @IBAction func filterViewButton(_ sender: Any) {
         filterView.isHidden = true
         if priceSwitch.isOn{
-            var price = Int(priceSlider.value)
+            let price = Int(priceSlider.value)
             concertsMapView.removeAnnotations(concertsMapView.annotations)
-            loadConcerts(price: price)
+            let concerts = loadConcerts(price: price)
+            if concerts.isEmpty{
+                let alert = UIAlertController(title: "No concerts to display!", message: "Sorry! Try to add new bands!", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     @IBAction func filterButton(_ sender: Any) {
+        priceSlider.setThumbImage(#imageLiteral(resourceName: "dollars"), for: .normal)
         priceSwitch.isOn = false
         valueLabel.isHidden = true
         filterView.isHidden = false

@@ -21,8 +21,19 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet weak var membersCollectionView: UICollectionView!
     @IBOutlet weak var bandLabel: UILabel!
     @IBOutlet weak var bandImageView: UIImageView!
+    @IBOutlet weak var addBandButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
+        
+        self.songsTableView.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50);
+        
+        self.songsTableView.separatorStyle = .none
+        self.bandsCollectionView.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50);
+        
+        self.membersCollectionView.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50);
+        
         bandLabel.text = band?.nameBand
         bandImageView.sd_setImage(with: URL(string: (band?.imageBand)!), placeholderImage: UIImage(named: (band?.nameBand)!))
         
@@ -34,10 +45,24 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         bandsCollectionView.delegate = self
         bandsCollectionView.dataSource = self
-        bandsCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.bandsCollectionView.reloadData()
+        }
+        
         
         songsTableView.delegate = self
         songsTableView.dataSource = self
+        
+        
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if ModelManager.dictionaryFavoriteBands[(band?.idBand)!] != nil{
+            addBandButton.setBackgroundImage( #imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
+        } else {
+            addBandButton.setBackgroundImage( #imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,7 +82,12 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     func findingSimilarBands(){
         if let band = band{
-            similarBands = ModelManager.searchData(genderBand: band.gender)
+            let myBands = ModelManager.searchData(genderBand: band.gender)
+            if let myBands = myBands{
+                similarBands = myBands
+            } else {
+                similarBands = []
+            }
             
         }
     }
@@ -139,25 +169,21 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let cell = songsTableView.dequeueReusableCell(withIdentifier: "SongTableViewCell", for: indexPath) as! SongTableViewCell
         let song = band?.songsBand[indexPath.row]
         cell.songLabel.text = song?.songName
+        cell.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
         
         return cell
     }
+    
     @IBAction func addBand(_ sender: Any) {
         
         if let band = self.band{
             if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
-                let alert = UIAlertController(title: "You had selected this band already!", message: "The band is in your favourite list already", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                
+                ModelManager.deleteFavoriteBand(band: band)
+                addBandButton.setBackgroundImage(#imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
             }
             else{
-                for concert in band.concertsBand{
-                    ModelManager.favoriteBands.append(band)
-                    ModelManager.staticBandsConcerts.append(concert)
-                    ModelManager.dictionaryFavoriteBands.updateValue(band, forKey: band.idBand)
-                }
-                
+                ModelManager.addFavoriteBand(band: band)
+                addBandButton.setBackgroundImage(#imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
             }
         }
     }
