@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		741327474A35954D8A1E5CA0 /* Pods_ObligatorioFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48547A925A7AAA06FEE766EB /* Pods_ObligatorioFinal.framework */; };
 		7828CC5D20EB7C5400B7E220 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7828CC5C20EB7C5300B7E220 /* Assets.xcassets */; };
+		7855966A20EBB1CC009DB588 /* ConcertAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7855966920EBB1CC009DB588 /* ConcertAnnotationView.swift */; };
 		789232D320E35CD1009A6624 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 789232D220E35CD1009A6624 /* GoogleService-Info.plist */; };
 		789232D520E49A0B009A6624 /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */; };
 		789232D720E4ADCA009A6624 /* BandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */; };
@@ -35,6 +36,7 @@
 		48547A925A7AAA06FEE766EB /* Pods_ObligatorioFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObligatorioFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		503C1A7F72CF705B8023442F /* Pods-ObligatorioFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObligatorioFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ObligatorioFinal/Pods-ObligatorioFinal.release.xcconfig"; sourceTree = "<group>"; };
 		7828CC5C20EB7C5300B7E220 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7855966920EBB1CC009DB588 /* ConcertAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcertAnnotationView.swift; sourceTree = "<group>"; };
 		789232D220E35CD1009A6624 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		789232D420E49A0B009A6624 /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		789232D620E4ADCA009A6624 /* BandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				8E11FFAE20C8B52400ADED0D /* AppDelegate.swift */,
 				8E4C6FE320D1EEED0056719F /* MapViewController.swift */,
+				7855966920EBB1CC009DB588 /* ConcertAnnotationView.swift */,
 				8E4C6FE520D1EF400056719F /* ConcertViewController.swift */,
 				8E4C6FE720D1EF650056719F /* BandViewController.swift */,
 				789232D220E35CD1009A6624 /* GoogleService-Info.plist */,
@@ -267,6 +270,7 @@
 				789232DE20E51365009A6624 /* Song.swift in Sources */,
 				789232E020E56C12009A6624 /* BandTableViewCell.swift in Sources */,
 				8E4C6FE620D1EF400056719F /* ConcertViewController.swift in Sources */,
+				7855966A20EBB1CC009DB588 /* ConcertAnnotationView.swift in Sources */,
 				789232D920E4C12B009A6624 /* SongTableViewCell.swift in Sources */,
 				8E11FFAF20C8B52400ADED0D /* AppDelegate.swift in Sources */,
 				8ED191F820CA0A8F00EAAB64 /* Concert.swift in Sources */,

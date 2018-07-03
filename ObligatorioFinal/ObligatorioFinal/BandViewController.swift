@@ -36,6 +36,10 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         bandLabel.text = band?.nameBand
         bandImageView.sd_setImage(with: URL(string: (band?.imageBand)!), placeholderImage: UIImage(named: (band?.nameBand)!))
+        bandImageView.layer.borderColor = UIColor.black.cgColor
+        bandImageView.layer.borderWidth = 3.0
+        bandImageView.layer.cornerRadius = bandImageView.frame.size.height / 2
+        bandImageView.clipsToBounds = true
         
         membersCollectionView.delegate = self
         membersCollectionView.dataSource = self
@@ -59,9 +63,9 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     override func viewWillAppear(_ animated: Bool) {
         if ModelManager.dictionaryFavoriteBands[(band?.idBand)!] != nil{
-            addBandButton.setBackgroundImage( #imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
+            addBandButton.setImage( #imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
         } else {
-            addBandButton.setBackgroundImage( #imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
+            addBandButton.setImage( #imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
         }
     }
     
@@ -175,15 +179,14 @@ class BandViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     @IBAction func addBand(_ sender: Any) {
-        
         if let band = self.band{
             if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
                 ModelManager.deleteFavoriteBand(band: band)
-                addBandButton.setBackgroundImage(#imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
+                addBandButton.setImage(#imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
             }
             else{
                 ModelManager.addFavoriteBand(band: band)
-                addBandButton.setBackgroundImage(#imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
+                addBandButton.setImage(#imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
             }
         }
     }

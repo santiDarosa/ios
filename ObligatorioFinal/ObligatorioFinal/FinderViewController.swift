@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import Microfutures
 
 class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
     @IBOutlet weak var bandsTableView: UITableView!
-    @IBOutlet weak var searchSwitch: UISwitch!
     @IBOutlet weak var searchLabel: UILabel!
     @IBOutlet weak var bandlabel: UILabel!
     @IBOutlet weak var finderSearchBar: UISearchBar!
@@ -33,6 +32,9 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         bandsTableView.delegate = self
         bandsTableView.dataSource = self
+        searchSegmentedControl.setTitle("Name", forSegmentAt: 0)
+        searchSegmentedControl.setTitle("Gender", forSegmentAt: 1)
+        searchSegmentedControl.tintColor = UIColor(displayP3Red: 0.25, green: 0.55, blue: 0.28, alpha: 1)
         
     }
     
@@ -66,9 +68,9 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.addButton.addTarget(self, action: #selector(self.addBand(_:)), for: .touchUpInside)
         cell.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)
         if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
-            cell.addButton.setBackgroundImage( #imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
+            cell.addButton.setImage( #imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
         } else {
-            cell.addButton.setBackgroundImage( #imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
+            cell.addButton.setImage( #imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
         }
         
         return cell
@@ -86,32 +88,26 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
         if ModelManager.dictionaryFavoriteBands[band.idBand] != nil{
             ModelManager.deleteFavoriteBand(band: band)
-            sender.setBackgroundImage(#imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "starNotMyFavoriteYet"), for: .normal)
         }
         else{
             ModelManager.addFavoriteBand(band: band)
-            sender.setBackgroundImage(#imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "starIsMyFavorite"), for: .normal)
         }
+        bandsTableView.reloadData()
     }
     
-    @IBAction func switchChange(_ sender: Any) {
-        if searchSwitch.isOn{
-            searchLabel.text = "Search for gender"
-        }else{
-            searchLabel.text = "Search for name"
-        }
-    }
     
     @IBAction func findElements(_ sender: Any) {
         let searchText = finderSearchBar.text
         
         if (searchText?.isEmpty)!{
             let alert = UIAlertController(title: "Search bar is empty!", message: "Please, search something.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
             if let searchText = searchText{
-                if searchSwitch.isOn{
+                if searchSegmentedControl.selectedSegmentIndex == 1{
                     let myBands = ModelManager.searchData(genderBand: searchText)
                     if let myBands = myBands{
                         bandsArray = myBands
@@ -130,7 +126,7 @@ class FinderViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if bandsArray.isEmpty{
             let alert = UIAlertController(title: "Band not found", message: "Sorry! The band not exists.", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }

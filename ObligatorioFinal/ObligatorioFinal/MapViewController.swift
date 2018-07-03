@@ -16,7 +16,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var priceSwitch: UISwitch!
     @IBOutlet weak var priceSlider: UISlider!
-
+    @IBOutlet weak var goToFinderButton: UIButton!
+    
     var selectedConcert: Concert?
     
     
@@ -26,6 +27,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         ModelManager.searchData()
         concertsMapView.delegate = self
         filterView.backgroundColor = UIColor(displayP3Red: 0.15, green: 0.15, blue: 0.08, alpha: 0.90)
+        filterView.layer.borderColor = UIColor.black.cgColor
+        filterView.layer.borderWidth = 5.0
+        
+        concertsMapView.register(ConcertAnnotationView.self,
+                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        
+        goToFinderButton.backgroundColor = UIColor(displayP3Red: 0.15, green: 0.15, blue: 0.08, alpha: 0.90)
+        goToFinderButton.layer.borderColor = UIColor.black.cgColor
+        goToFinderButton.layer.borderWidth = 3.0
+        goToFinderButton.layer.cornerRadius = goToFinderButton.frame.size.height / 2
+        goToFinderButton.clipsToBounds = true
+        
+        priceSwitch.thumbTintColor = UIColor(displayP3Red: 0.55, green: 0.55, blue: 0.48, alpha: 0.90)
         
     }
     
@@ -34,7 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let concerts = self.loadConcerts(price: 5000)
         if concerts.isEmpty{
             let alert = UIAlertController(title: "No concerts to display!", message: "Sorry! Try to add new bands!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -45,15 +59,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? Concert else { return nil }
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
+        let identifier = "MKMapViewDefaultAnnotationViewReuseIdentifier"
+        var view: ConcertAnnotationView
         
         if let dequeuedView = concertsMapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            as? MKMarkerAnnotationView {
+            as? ConcertAnnotationView {
             dequeuedView.annotation = annotation
             view = dequeuedView
         } else {
-            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view = ConcertAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -87,7 +101,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    
     @IBAction func filterViewButton(_ sender: Any) {
         filterView.isHidden = true
         if priceSwitch.isOn{
@@ -96,13 +109,15 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let concerts = loadConcerts(price: price)
             if concerts.isEmpty{
                 let alert = UIAlertController(title: "No concerts to display!", message: "Sorry! Try to add new bands!", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }
     }
+    
     @IBAction func filterButton(_ sender: Any) {
         priceSlider.setThumbImage(#imageLiteral(resourceName: "dollars"), for: .normal)
+        priceSlider.isEnabled = false
         priceSwitch.isOn = false
         valueLabel.isHidden = true
         filterView.isHidden = false
@@ -115,7 +130,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     @IBAction func activatePriceSwitch(_ sender: Any) {
         priceSlider.isEnabled = priceSwitch.isOn
-        valueLabel.isHidden = false
+        valueLabel.isHidden = !priceSwitch.isOn
+        valueLabel.text = "\(Int(priceSlider.value))"
     }
     
     @IBAction func changeValuePriceSlider(_ sender: Any) {

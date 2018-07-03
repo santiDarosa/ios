@@ -28,6 +28,10 @@ class ConcertViewController: UIViewController, UICollectionViewDataSource, UICol
         if let bandConcert = bandConcert{
             selectedBand = bandConcert
             concertImageView.sd_setImage(with: URL(string: bandConcert.imageBand), placeholderImage: UIImage(named: bandConcert.nameBand))
+            concertImageView.layer.borderColor = UIColor.black.cgColor
+            concertImageView.layer.borderWidth = 3.0
+            concertImageView.layer.cornerRadius = concertImageView.frame.size.height / 2
+            concertImageView.clipsToBounds = true
         }
         
         view.backgroundColor = UIColor(displayP3Red: 0.25, green: 0.25, blue: 0.18, alpha: 0.50)

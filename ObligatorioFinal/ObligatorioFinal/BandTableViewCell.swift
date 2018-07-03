@@ -21,6 +21,11 @@ class BandTableViewCell: UITableViewCell{
         let view = UIView()
         view.backgroundColor = UIColor(displayP3Red: 0.35, green: 0.35, blue: 0.28, alpha: 0.97)
         selectedBackgroundView = view
+        bandImageView.layer.borderWidth = 1.0
+        bandImageView.layer.borderColor = UIColor.black.cgColor
+        bandImageView.layer.cornerRadius = 10.0
+        bandImageView.layer.masksToBounds = false
+        bandImageView.clipsToBounds = true
     }
     
 

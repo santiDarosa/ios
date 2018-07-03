@@ -10,8 +10,6 @@ import Foundation
 import MapKit
 import Firebase
 import FirebaseDatabase
-import SwiftyJSON
-import Microfutures
 
 
 class ModelManager{
@@ -27,7 +25,6 @@ class ModelManager{
         let idBand = band.idBand
         if dictionaryFavoriteBands[idBand] != nil{
             dictionaryFavoriteBands.removeValue(forKey: idBand)
-            print(dictionaryFavoriteBands)
         }
         if staticBandsConcerts[idBand] != nil{
             staticBandsConcerts.removeValue(forKey: idBand)
@@ -38,7 +35,6 @@ class ModelManager{
         let idBand = band.idBand
         if dictionaryFavoriteBands[idBand] == nil{
             dictionaryFavoriteBands.updateValue(band, forKey: idBand)
-            print(dictionaryFavoriteBands)
             if band.concertsBand != []{
                 staticBandsConcerts.updateValue(band.concertsBand, forKey: idBand)
             }
